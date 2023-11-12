@@ -14,7 +14,7 @@ vim.keymap.set('n',"<leader>p1", function()
 end)
 vim.keymap.set('n',"<leader>p2", function()
     gitUser = "9weights"
-    gitKey = "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"
+    gitKey = require("mfdoom.gitKey")
     fireExit = vim.api.nvim_replace_termcodes("<C-c>", false, false, true)
     carRet = vim.api.nvim_replace_termcodes("<CR>", false, false, true)
     vim.api.nvim_feedkeys("i" .. gitKey .. carRet, 'n', false)
