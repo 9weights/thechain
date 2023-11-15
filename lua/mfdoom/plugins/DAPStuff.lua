@@ -1,11 +1,13 @@
 return {
-    {"mfussenegger/nvim-dap",
+    {
+        "mfussenegger/nvim-dap",
         config = function()
             local dap = require('dap')
             dap.adapters.cppdbg = {
                 id = 'cppdbg',
                 type = 'executable',
-                command = '/home/vimto/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+                command =
+                    '/home/vimto/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
             }
             dap.configurations.cpp = {
                 {
@@ -37,13 +39,14 @@ return {
             vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
             vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
             vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
-            vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+            vim.keymap.set('n', '<Leader>lp',
+                function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
             vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
             vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
-            vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
+            vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
                 require('dap.ui.widgets').hover()
             end)
-            vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
+            vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function()
                 require('dap.ui.widgets').preview()
             end)
             vim.keymap.set('n', '<Leader>df', function()
@@ -53,6 +56,9 @@ return {
             vim.keymap.set('n', '<Leader>ds', function()
                 local widgets = require('dap.ui.widgets')
                 widgets.centered_float(widgets.scopes)
+            end)
+            vim.keymap.set('n', '<S-F5>', function()
+                require('dap').disconnect()
             end)
         end,
         lazy = true,
@@ -69,25 +75,26 @@ return {
                 "n",
                 "<leader>dd",
                 function()
-                    require("dapui").open()  -- Requires nvim-dap-ui
+                    require("dapui").open() -- Requires nvim-dap-ui
 
-                    vim.cmd[[DapContinue]]  -- Important: This will lazy-load nvim-dap
+                    vim.cmd [[DapContinue]] -- Important: This will lazy-load nvim-dap
                 end
             )
-           -- local dap, dapui =require("dap"),require("dapui")
-           -- dap.listeners.after.event_initialized["dapui_config"]=function()
-           --     dapui.open()
-           -- end
-           -- dap.listeners.before.event_terminated["dapui_config"]=function()
-           --     dapui.close()
-           -- end
-           -- dap.listeners.before.event_exited["dapui_config"]=function()
-           --     dapui.close()
-           -- end
+            vim.fn.sign_define('DapBreakpoint', { text = '🛑', texthl = '', linehl = '', numhl = '' })
+
+            local dap, dapui =require("dap"),require("dapui")
+            dap.listeners.after.event_initialized["dapui_config"]=function()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated["dapui_config"]=function()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited["dapui_config"]=function()
+                dapui.close()
+            end
         end,
         dependencies = {
             "mfussenegger/nvim-dap",
         },
     },
 }
-
