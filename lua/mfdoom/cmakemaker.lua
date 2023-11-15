@@ -1,12 +1,24 @@
 vim.api.nvim_create_user_command("MakeCMake",function()
+    executableName = vim.fn.input("Executable name: ")
+    if (executableName == "") then
+        executableName = "sadge"
+    end
+
+    projectName = ""
+    if (projectName == "") then
+        projectName = executableName
+    end
+
+
     vim.cmd("new CMakeLists.txt")
     vim.api.nvim_set_current_line("cmake_minimum_required(VERSION 3.10)")
     vim.cmd('norm! o')
-    vim.api.nvim_set_current_line("project(Sadge)")
+    vim.api.nvim_set_current_line("project(" .. projectName .. ")")
     vim.cmd('norm! o')
     vim.api.nvim_set_current_line("set(CMAKE_EXPORT_COMPILE_COMMANDS ON)")
     vim.cmd('norm! o')
-    vim.api.nvim_set_current_line("add_executable(sadge main.cpp)")
+
+    vim.api.nvim_set_current_line("add_executable(" .. executableName .. " main.cpp)")
     vim.cmd("w")
     vim.cmd("wincmd c")
     vim.cmd("wincmd p")
