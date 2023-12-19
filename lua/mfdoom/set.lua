@@ -6,7 +6,13 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
-vim.opt.smartindent = true
+--vim.opt.nosmartindent
+--vim.opt.noautoindent
+--vim.opt.nocindent
+vim.opt.smartindent = false
+vim.opt.autoindent = false
+vim.opt.cindent = true
+vim.cmd("filetype indent off")
 
 vim.opt.wrap = false
 

@@ -34,4 +34,15 @@ vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 --vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }) makes file executable
 
+--My remaps--
 
+--vim.keymap.set("i", "<C-i>", "<C-n>")
+vim.keymap.set("i", "<A-h>", "<Left>")
+vim.keymap.set("i", "<A-j>", "<Down>")
+vim.keymap.set("i", "<A-k>", "<Up>")
+vim.keymap.set("i", "<A-l>", "<Right>")
+
+
+vim.keymap.set("n", "<leader>cm", function()
+    vim.cmd("CMakeClose")
+    end)

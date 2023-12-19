@@ -1,7 +1,7 @@
-vim.keymap.set('n', '<A-F5>', function()
+vim.keymap.set('n', '<F53>', function()-- alt f5
     vim.cmd("CMakeDebug")
 end)
-vim.keymap.set('n', '<C-F5>', function()
+vim.keymap.set('n', '<F29>', function()-- ctrl f5
     vim.cmd("CMakeRun")
 end)
 
@@ -11,7 +11,7 @@ end)
    -- vim.cmd("CMakeDebug")
 --end)
 
-vim.keymap.set('n', '<C-B>', function()
+vim.keymap.set('n', '<c-b>', function()
     vim.cmd("CMakeBuild")
     -- add feedkeys to autoselect all
 end)
