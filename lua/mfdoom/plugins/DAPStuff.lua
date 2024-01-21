@@ -57,8 +57,12 @@ return {
                 local widgets = require('dap.ui.widgets')
                 widgets.centered_float(widgets.scopes)
             end)
-            vim.keymap.set('n', '<S-F5>', function()
+            vim.keymap.set('n', '<F17>', function()
                 require('dap').disconnect()
+                require('dap').close()
+            end)
+            vim.keymap.set('n', '<Leader>c', function()
+                require('dap').repl.toggle()
             end)
         end,
         lazy = true,
