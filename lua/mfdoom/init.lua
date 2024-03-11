@@ -6,4 +6,5 @@ require("mfdoom.centreScreen")
 require("mfdoom.cmakemaker")
 require("mfdoom.gitMacros")
 require("mfdoom.shortcuts")
+require("mfdoom.undofile")
 vim.cmd[[colorscheme tokyonight]]

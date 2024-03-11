@@ -7,7 +7,7 @@ return{
             lsp_zero.on_attach(function(client, bufnr)
                 lsp_zero.default_keymaps({buffer = bufnr})
             end)
-            lsp_zero.setup_servers({'lua_ls', 'jedi_language_server', 'clangd', 'rust_analyser'})
+            lsp_zero.setup_servers({'lua_ls', 'jedi_language_server', 'clangd'})
         end
     },
     {'neovim/nvim-lspconfig'},

@@ -5,7 +5,7 @@ return {
         config = function()
             require("mason").setup()
             require("mason-nvim-dap").setup({
-                ensure_installed = {"cppdbg"}
+                ensure_installed = {"cppdbg", "rust-analyser"}
             })
         end,
     },
